@@ -64,12 +64,12 @@ void readThread(StudentDB& DB, int id) {
 
 int main() {
     setlocale(LC_ALL, "Russian");
-    StudentDB database;
+    StudentDB DB;
 
-    std::thread writer1(writeThread, std::ref(database), 1, "Ваня", 20);
-    std::thread writer2(writeThread, std::ref(database), 2, "Маша", 21);
-    std::thread reader1(readThread, std::ref(database), 1);
-    std::thread reader2(readThread, std::ref(database), 2);
+    std::thread writer1(writeThread, std::ref(DB), 1, "Ваня", 20);
+    std::thread writer2(writeThread, std::ref(DB), 2, "Маша", 21);
+    std::thread reader1(readThread, std::ref(DB), 1);
+    std::thread reader2(readThread, std::ref(DB), 2);
 
     writer1.join();
     writer2.join();
